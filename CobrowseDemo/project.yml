@@ -1,0 +1,42 @@
+name: CobrowseDemo
+options:
+  bundleIdPrefix: com.zoho.assist
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+
+packages:
+  # The sample lives in the SDK repository, so it consumes the Package.swift
+  # next to it rather than a published tag. Integrators use the url/version
+  # form from the README.
+  AssistCobrowse:
+    path: ..
+
+targets:
+  CobrowseDemo:
+    type: application
+    platform: iOS
+    sources:
+      - path: CobrowseDemo
+    dependencies:
+      - package: AssistCobrowse
+        product: AssistCobrowse
+    scheme:
+      testTargets: []
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jambav.zacocbrowse.demo
+        CODE_SIGN_STYLE: Manual
+        DEVELOPMENT_TEAM: 7VPXG96P25
+        PROVISIONING_PROFILE_SPECIFIER: "Wildcard Development Profile"
+        MARKETING_VERSION: "0.0.1"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.9"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"

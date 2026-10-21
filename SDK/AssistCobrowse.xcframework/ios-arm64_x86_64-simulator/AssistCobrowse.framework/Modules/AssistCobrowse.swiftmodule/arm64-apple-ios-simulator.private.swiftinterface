@@ -1,0 +1,160 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name AssistCobrowse
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+import CoreGraphics
+import Foundation
+import ObjectiveC
+import QuartzCore
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import ObjectiveC.runtime
+public protocol ZAssistCobrowseDelegate : AnyObject {
+  func cobrowseRedactedViews(for vc: UIKit.UIViewController) -> [UIKit.UIView]
+}
+public struct ZAssistCobrowseViewer : Swift.Equatable {
+  public enum Status : Swift.Equatable {
+    case connected
+    case disconnected
+    public static func == (a: AssistCobrowse.ZAssistCobrowseViewer.Status, b: AssistCobrowse.ZAssistCobrowseViewer.Status) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let clientId: Swift.String
+  public let displayName: Swift.String?
+  public let osName: Swift.String?
+  public let status: AssistCobrowse.ZAssistCobrowseViewer.Status
+  public static func == (a: AssistCobrowse.ZAssistCobrowseViewer, b: AssistCobrowse.ZAssistCobrowseViewer) -> Swift.Bool
+}
+extension UIKit.UIView {
+  @discardableResult
+  @_Concurrency.MainActor @preconcurrency public func cobrowseRedacted(_ flag: Swift.Bool = true) -> UIKit.UIView
+}
+public struct ZAssistCobrowseViewport : Swift.Equatable {
+  public let width: CoreFoundation.CGFloat
+  public let height: CoreFoundation.CGFloat
+  public init(width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat)
+  public static let zero: AssistCobrowse.ZAssistCobrowseViewport
+  public static func == (a: AssistCobrowse.ZAssistCobrowseViewport, b: AssistCobrowse.ZAssistCobrowseViewport) -> Swift.Bool
+}
+public protocol ZAssistCobrowseViewportObserver : AnyObject {
+  func cobrowseViewportDidChange(_ viewport: AssistCobrowse.ZAssistCobrowseViewport)
+}
+public enum ZAssistCobrowseEndReason {
+  case stoppedByHost
+  case endedByCustomer
+  case endedByAgent
+  case inactivity
+  case timeout
+  case deniedByViewer(AssistCobrowse.ZAssistCobrowseViewer)
+  case connectFailed((any Swift.Error)?)
+  case disconnection(reason: Swift.String)
+  case ended
+}
+extension AssistCobrowse.ZAssistCobrowseEndReason {
+  public var logLabel: Swift.String {
+    get
+  }
+  public static func from(action: Swift.String, reason: Swift.String) -> AssistCobrowse.ZAssistCobrowseEndReason
+}
+public protocol ZAssistCobrowseSessionListener : AnyObject {
+  func cobrowseSession(_ session: AssistCobrowse.ZAssistCobrowseSession, didChangeState state: AssistCobrowse.ZAssistCobrowseSession.State)
+  func cobrowseSessionDidStart(_ session: AssistCobrowse.ZAssistCobrowseSession)
+  func cobrowseSessionDidEnd(_ session: AssistCobrowse.ZAssistCobrowseSession, reason: AssistCobrowse.ZAssistCobrowseEndReason)
+  func cobrowseSessionDidEnterBackground(_ session: AssistCobrowse.ZAssistCobrowseSession)
+  func cobrowseSessionWillEnterForeground(_ session: AssistCobrowse.ZAssistCobrowseSession)
+  func cobrowseSession(_ session: AssistCobrowse.ZAssistCobrowseSession, participantStatusDidChange participant: AssistCobrowse.ZAssistCobrowseViewer)
+  func cobrowseSession(_ session: AssistCobrowse.ZAssistCobrowseSession, didReceiveControlRequest viewer: AssistCobrowse.ZAssistCobrowseViewer, reply: @escaping (_ accept: Swift.Bool) -> Swift.Void)
+}
+extension AssistCobrowse.ZAssistCobrowseSessionListener {
+  public func cobrowseSession(_ session: AssistCobrowse.ZAssistCobrowseSession, didChangeState state: AssistCobrowse.ZAssistCobrowseSession.State)
+  public func cobrowseSessionDidStart(_ session: AssistCobrowse.ZAssistCobrowseSession)
+  public func cobrowseSessionDidEnd(_ session: AssistCobrowse.ZAssistCobrowseSession, reason: AssistCobrowse.ZAssistCobrowseEndReason)
+  public func cobrowseSessionDidEnterBackground(_ session: AssistCobrowse.ZAssistCobrowseSession)
+  public func cobrowseSessionWillEnterForeground(_ session: AssistCobrowse.ZAssistCobrowseSession)
+  public func cobrowseSession(_ session: AssistCobrowse.ZAssistCobrowseSession, participantStatusDidChange participant: AssistCobrowse.ZAssistCobrowseViewer)
+  public func cobrowseSession(_ session: AssistCobrowse.ZAssistCobrowseSession, didReceiveControlRequest viewer: AssistCobrowse.ZAssistCobrowseViewer, reply: @escaping (_ accept: Swift.Bool) -> Swift.Void)
+}
+public enum ZAssistCobrowseError : Swift.Error, Swift.Equatable {
+  case notRegistered
+  case alreadyCapturing
+  case invalidCredentials
+  case registrationFailed(reason: Swift.String)
+  case noActiveScene
+  public static func == (a: AssistCobrowse.ZAssistCobrowseError, b: AssistCobrowse.ZAssistCobrowseError) -> Swift.Bool
+}
+extension AssistCobrowse.ZAssistCobrowseError : Foundation.LocalizedError {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+}
+public enum ZAssistCobrowseSDK {
+  public static let version: Swift.String
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func cobrowseRedacted() -> some SwiftUICore.View
+  
+}
+public protocol ZAssistCobrowseRedacted : AnyObject {
+  func cobrowseRedactedViews() -> [UIKit.UIView]
+}
+@_hasMissingDesignatedInitializers final public class ZAssistCobrowseSession {
+  public static let shared: AssistCobrowse.ZAssistCobrowseSession
+  public enum State {
+    case idle
+    case registering
+    case registered
+    case capturing
+    case backgrounded
+    case closing
+    case ended
+    public static func == (a: AssistCobrowse.ZAssistCobrowseSession.State, b: AssistCobrowse.ZAssistCobrowseSession.State) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var state: AssistCobrowse.ZAssistCobrowseSession.State {
+    get
+  }
+  weak final public var listener: (any AssistCobrowse.ZAssistCobrowseSessionListener)?
+  weak final public var delegate: (any AssistCobrowse.ZAssistCobrowseDelegate)?
+  final public var logHandler: ((Swift.String) -> Swift.Void)?
+  weak final public var viewportObserver: (any AssistCobrowse.ZAssistCobrowseViewportObserver)?
+  final public var currentViewport: AssistCobrowse.ZAssistCobrowseViewport {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func register(config: AssistCobrowse.ZAssistCobrowseConfig, completion: @escaping (Swift.Result<Swift.Void, AssistCobrowse.ZAssistCobrowseError>) -> Swift.Void)
+  #endif
+  final public func startCapture() throws
+  final public func endSession()
+  @objc deinit
+}
+public struct ZAssistCobrowseConfig {
+  public let sessionKey: Swift.String
+  public let widgetCode: Swift.String
+  public let baseURL: Swift.String
+  public let displayName: Swift.String?
+  public let autoRedactSensitiveFields: Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(sessionKey: Swift.String, widgetCode: Swift.String, baseURL: Swift.String, displayName: Swift.String? = nil, autoRedactSensitiveFields: Swift.Bool = true)
+  #endif
+}
+extension UIKit.UIWindow {
+  @_Concurrency.MainActor @preconcurrency public var cobrowseExcludedFromCapture: Swift.Bool {
+    get
+    set
+  }
+}
+extension AssistCobrowse.ZAssistCobrowseViewer.Status : Swift.Hashable {}
+extension AssistCobrowse.ZAssistCobrowseSession.State : Swift.Equatable {}
+extension AssistCobrowse.ZAssistCobrowseSession.State : Swift.Hashable {}
