@@ -55,13 +55,13 @@ get them — they cannot be obtained from the SDK or from this repository.
 `baseURL` and `widgetCode` are fixed for your account — set them once in your app.
 `sessionKey` is per-session and entered by the user at runtime.
 
-`baseURL` must be the origin only, with no trailing slash and no path — the SDK appends
-`/api/v1/cobrowsewidget/join` to it:
+`baseURL` must be the origin only — no trailing slash and no path. The SDK builds the rest
+of the request URL itself:
 
 ```
-https://assist.zoho.com          ✅
-https://assist.zoho.com/         ❌  trailing slash
-https://assist.zoho.com/api/v1   ❌  path already included
+https://assist.zoho.com           ✅
+https://assist.zoho.com/          ❌  trailing slash
+https://assist.zoho.com/cobrowse  ❌  path included
 ```
 
 ---

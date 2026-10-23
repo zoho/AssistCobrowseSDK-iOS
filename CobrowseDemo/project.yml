@@ -8,11 +8,10 @@ options:
 
 packages:
   # Resolved from the published repository, the same way an integrator would,
-  # rather than from the Package.swift next to it. Tracks the main branch
-  # because no version tag has been pushed yet.
+  # rather than from the Package.swift next to it.
   AssistCobrowse:
     url: https://github.com/zoho/AssistCobrowseSDK-iOS.git
-    branch: main
+    from: 1.0.0
 
 targets:
   CobrowseDemo:
