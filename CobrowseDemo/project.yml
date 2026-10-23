@@ -7,11 +7,12 @@ options:
   createIntermediateGroups: true
 
 packages:
-  # The sample lives in the SDK repository, so it consumes the Package.swift
-  # next to it rather than a published tag. Integrators use the url/version
-  # form from the README.
+  # Resolved from the published repository, the same way an integrator would,
+  # rather than from the Package.swift next to it. Tracks the main branch
+  # because no version tag has been pushed yet.
   AssistCobrowse:
-    path: ..
+    url: https://github.com/zoho/AssistCobrowseSDK-iOS.git
+    branch: main
 
 targets:
   CobrowseDemo:

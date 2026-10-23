@@ -19,7 +19,6 @@
 
 /* Begin PBXFileReference section */
 		485EE50E1C28EBA2CD7832A6 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
-		67BFD891DE180813059525B8 /* ZACobrowse-github */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ZACobrowse-github"; path = ..; sourceTree = SOURCE_ROOT; };
 		84EFC4DA4AC77127A8F2C5B0 /* CobrowseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CobrowseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A207BA3610E54E956BBC00AE /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		C28B661289F263380B75DCD7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -59,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				3C1F7857BB13A328B515CC37 /* CobrowseDemo */,
-				B883B378121771A57ACF187C /* Packages */,
 				8AD80858F0BB6EDF4A254CA0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,14 +68,6 @@
 				84EFC4DA4AC77127A8F2C5B0 /* CobrowseDemo.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B883B378121771A57ACF187C /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				67BFD891DE180813059525B8 /* ZACobrowse-github */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,7 +111,7 @@
 			mainGroup = 490D833B124A32253362D616;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				4E689D232A8A15997CB35B2E /* XCLocalSwiftPackageReference ".." */,
+				4E689D232A8A15997CB35B2E /* XCRemoteSwiftPackageReference "AssistCobrowseSDK-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8AD80858F0BB6EDF4A254CA0 /* Products */;
@@ -347,16 +337,21 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		4E689D232A8A15997CB35B2E /* XCLocalSwiftPackageReference ".." */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ..;
+/* Begin XCRemoteSwiftPackageReference section */
+		4E689D232A8A15997CB35B2E /* XCRemoteSwiftPackageReference "AssistCobrowseSDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zoho/AssistCobrowseSDK-iOS.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		C3745D18EE88526E25A59FEC /* AssistCobrowse */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 4E689D232A8A15997CB35B2E /* XCRemoteSwiftPackageReference "AssistCobrowseSDK-iOS" */;
 			productName = AssistCobrowse;
 		};
 /* End XCSwiftPackageProductDependency section */
